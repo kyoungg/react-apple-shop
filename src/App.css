@@ -1,0 +1,62 @@
+.App {
+  text-align: center;
+}
+
+div {
+  align-items: center;
+}
+
+.main-bg {
+  height: 300px;
+  background-image: url("./assets/image/bg.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.navbar {
+  font-family: BebasNeue;
+}
+
+.navbar-logo {
+  font-size: 25px;
+}
+
+.productCard {
+  border: solid rgb(206, 206, 206) 1px;
+  width: 230px;
+  padding: 10px;
+  margin: 20px 15px;
+}
+
+.productCard > .product-info {
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.productCard > .product-info > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row {
+  justify-content: center;
+}
+
+@font-face {
+  font-family: "BebasNeue";
+  src: url(./assets/fonts/Bebas_Neue/BebasNeue-Regular.ttf);
+}
+@font-face {
+  font-family: "Bitter";
+  src: url(./assets/fonts/Bitter/Bitter-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: "NotoSans";
+  src: url(./assets/fonts/Noto_Sans_KR/NotoSansKR-Regular.otf);
+}
+@font-face {
+  font-family: "Myeongjo";
+  src: url(./assets/fonts/Nanum_Myeongjo/NanumMyeongjo-ExtraBold.ttf);
+}
