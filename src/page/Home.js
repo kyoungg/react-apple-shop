@@ -6,7 +6,7 @@ import { priceToString } from "../common/functions.js";
 const ProductCard = ({ products }) => {
   return products.map((item) => {
     return (
-      <Col sm key={item.id} className="productCard">
+      <Col md="auto" key={item.id} className="productCard">
         <div className="product-info">
           <img src={item.img} width="80%" />
           <div className="product-summary">

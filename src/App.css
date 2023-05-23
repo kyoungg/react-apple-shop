@@ -29,10 +29,14 @@ a {
 
 .productCard {
   border: solid rgb(206, 206, 206) 1px;
-  width: 230px;
+  width: 210px;
+  height: 230px;
   padding: 10px;
   margin: 20px 15px;
   box-sizing: border-box;
+}
+
+@media (min-width: 0px) .productCard {
 }
 
 .productCard > .product-info {
