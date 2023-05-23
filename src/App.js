@@ -2,6 +2,7 @@ import "./App.css";
 import { Button, Nav, Navbar, Container, Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import data from "./data.js";
+import { Routes, Route, Link } from "react-router-dom";
 
 function priceToString(price) {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
