@@ -1,6 +1,4 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { useState } from "react";
-import data from "../data.js";
 import { priceToString } from "../common/functions.js";
 
 const ProductCard = ({ products }) => {
@@ -20,14 +18,16 @@ const ProductCard = ({ products }) => {
   });
 };
 
-const Home = () => {
-  const [products, setProducts] = useState(data);
+const Home = ({ products }) => {
   return (
-    <Container>
-      <Row>
-        <ProductCard products={products} />
-      </Row>
-    </Container>
+    <>
+      <div className="main-bg"></div>
+      <Container>
+        <Row>
+          <ProductCard products={products} />
+        </Row>
+      </Container>
+    </>
   );
 };
 

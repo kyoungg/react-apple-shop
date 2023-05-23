@@ -36,9 +36,6 @@ a {
   box-sizing: border-box;
 }
 
-@media (min-width: 0px) .productCard {
-}
-
 .productCard > .product-info {
   height: 210px;
   display: flex;
