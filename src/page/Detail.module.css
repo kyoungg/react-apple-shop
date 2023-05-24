@@ -1,0 +1,9 @@
+.orderBtn {
+  margin: 10px;
+  padding: 8px 15px;
+  color: white;
+  background-color: rgb(221, 66, 66);
+  font-family: NotoSans;
+  border: none;
+  border-radius: 10px;
+}
