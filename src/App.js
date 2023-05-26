@@ -6,6 +6,7 @@ import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Home from "./page/Home";
 import Detail from "./page/Detail";
 import Error from "./page/Error";
+import Cart from "./page/Cart";
 
 function App() {
   const [products] = useState(data);
@@ -21,6 +22,7 @@ function App() {
             <Link to="/">Home</Link>
             <Link to="detail">Detail</Link>
             <Link to="/event">Event</Link>
+            <Link to="/cart">Cart</Link>
           </Nav>
         </Container>
       </Navbar>
@@ -66,6 +68,7 @@ function App() {
             element={<h2 className="event-text">생일쿠폰 받기🎂</h2>}
           ></Route>
         </Route>
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );
