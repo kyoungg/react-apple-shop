@@ -35,7 +35,7 @@ function App() {
           path="/event"
           element={
             <>
-              <h1>오늘의 이벤트🎁</h1>
+              <h1 className="event-text">오늘의 이벤트🎁</h1>
               <Button
                 variant="outline-success"
                 onClick={() => {
@@ -57,8 +57,14 @@ function App() {
             </>
           }
         >
-          <Route path="one" element={<h2>양배추즙 받기🥬</h2>}></Route>
-          <Route path="two" element={<h2>생일쿠폰 받기🎂</h2>}></Route>
+          <Route
+            path="one"
+            element={<h2 className="event-text">양배추즙 받기🥬</h2>}
+          ></Route>
+          <Route
+            path="two"
+            element={<h2 className="event-text">생일쿠폰 받기🎂</h2>}
+          ></Route>
         </Route>
       </Routes>
     </div>

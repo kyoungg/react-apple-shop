@@ -55,6 +55,11 @@ a {
   justify-content: center;
 }
 
+.event-text {
+  margin: 10px;
+  padding: 10px;
+}
+
 @font-face {
   font-family: "BebasNeue";
   src: url(./assets/fonts/Bebas_Neue/BebasNeue-Regular.ttf);

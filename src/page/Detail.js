@@ -3,6 +3,7 @@ import { priceToString } from "../common/functions.js";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import styles from "./Detail.module.css";
+import { Nav } from "react-bootstrap";
 
 const EventBox = styled.div`
   color: red;
@@ -11,14 +12,47 @@ const EventBox = styled.div`
   background: yellow;
 `;
 
+const TabBox = ({ tab, product }) => {
+  const [fade, setFade] = useState("");
+  useEffect(() => {
+    setTimeout(() => {
+      setFade(styles.end);
+    }, 100);
+    setFade("");
+  }, [tab]);
+
+  return (
+    <div className={`${styles.start} ${fade}`}>
+      {
+        [
+          <div className={styles.tabBox}>
+            아무튼 [{product.title}] 상품 상세
+          </div>,
+          <div className={styles.tabBox}>아무튼 상품 후기</div>,
+          <div className={styles.tabBox}>아무튼 상품 문의</div>,
+        ][tab]
+      }
+    </div>
+  );
+};
+
 const Detail = ({ products }) => {
   const { id } = useParams();
   const product = products.find((item) => item.id == id);
   const [limit, setLimit] = useState(true);
   const [input, setInput] = useState("0");
+  const [tab, setTeb] = useState(0);
+  const [fade, setFade] = useState("");
   const onChange = (evt) => {
     setInput(evt.target.value);
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFade(styles.end);
+    }, 100);
+    setFade("");
+  }, [tab]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -34,7 +68,7 @@ const Detail = ({ products }) => {
   }, [input]);
 
   return (
-    <div className="container">
+    <div className={`container ${styles.start} ${fade}`}>
       {limit ? (
         <EventBox>
           <h3>🚨2초 이내 구매시 할인🚨</h3>
@@ -52,6 +86,39 @@ const Detail = ({ products }) => {
           <button className={styles.orderBtn}>Order</button>
         </div>
       </div>
+      <Nav variant="tabs" defaultActiveKey="link0">
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link0"
+            onClick={() => {
+              setTeb(0);
+            }}
+          >
+            상품 상세
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link1"
+            onClick={() => {
+              setTeb(1);
+            }}
+          >
+            리뷰
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link2"
+            onClick={() => {
+              setTeb(2);
+            }}
+          >
+            Q&A
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+      <TabBox tab={tab} product={product} />
     </div>
   );
 };

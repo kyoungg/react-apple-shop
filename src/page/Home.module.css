@@ -1,0 +1,9 @@
+.moreListBtn {
+  margin: 10px;
+  padding: 8px 15px;
+  color: white;
+  background-color: rgb(78, 150, 231);
+  font-family: NotoSans;
+  border: none;
+  border-radius: 10px;
+}
