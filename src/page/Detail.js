@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import styles from "./Detail.module.css";
 import { Nav } from "react-bootstrap";
+import { addProduct } from "../store.js";
+import { useDispatch } from "react-redux";
 
 const EventBox = styled.div`
   color: red;
@@ -40,9 +42,10 @@ const Detail = ({ products }) => {
   const { id } = useParams();
   const product = products.find((item) => item.id == id);
   const [limit, setLimit] = useState(true);
-  const [input, setInput] = useState("0");
+  const [input, setInput] = useState("1");
   const [tab, setTeb] = useState(0);
   const [fade, setFade] = useState("");
+  const dispatch = useDispatch();
   const onChange = (evt) => {
     setInput(evt.target.value);
   };
@@ -83,7 +86,20 @@ const Detail = ({ products }) => {
           <p>{product.content}</p>
           <p>{priceToString(product.price)} ₩</p>
           <input type="text" value={input} onChange={onChange} />
-          <button className={styles.orderBtn}>Order</button>
+          <button
+            className={styles.orderBtn}
+            onClick={() => {
+              dispatch(
+                addProduct({
+                  id: id,
+                  name: product.title,
+                  count: Number(input),
+                })
+              );
+            }}
+          >
+            Order
+          </button>
         </div>
       </div>
       <Nav variant="tabs" defaultActiveKey="link0">

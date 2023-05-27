@@ -1,9 +1,12 @@
 import { Table } from "react-bootstrap";
 import styles from "./Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { changeKimTrue, UP, DOWN } from "../store";
+import { changeKimTrue } from "../store/userSlice";
+import { correctionProduct } from "../store";
+import { useState } from "react";
 
 const Cart = () => {
+  const [count, setCount] = useState(1);
   let user = useSelector((state) => state.user);
   let cartProducts = useSelector((state) => state.cartProducts);
   const dispatch = useDispatch();
@@ -37,21 +40,22 @@ const Cart = () => {
                 <td>{item.name}</td>
                 <td>{item.count} 개</td>
                 <td>
+                  <input
+                    type="number"
+                    value={count}
+                    onChange={(evt) => {
+                      setCount(evt.target.value);
+                    }}
+                  />
                   <button
                     className={styles.correctionBtn}
                     onClick={() => {
-                      dispatch(UP(item.id));
+                      dispatch(
+                        correctionProduct({ id: item.id, count: count })
+                      );
                     }}
                   >
                     +
-                  </button>
-                  <button
-                    className={styles.correctionBtn}
-                    onClick={() => {
-                      dispatch(DOWN(item.id));
-                    }}
-                  >
-                    -
                   </button>
                 </td>
               </tr>

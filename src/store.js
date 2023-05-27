@@ -1,16 +1,5 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-let user = createSlice({
-  name: "user",
-  initialState: { firstName: "kim", lastName: "구라" },
-  reducers: {
-    changeKimTrue(state) {
-      state.lastName = "진실";
-    },
-  },
-});
-
-export let { changeKimTrue } = user.actions;
+import user from "./store/userSlice";
 
 let stock = createSlice({
   name: "stock",
@@ -25,18 +14,24 @@ let cartProducts = createSlice({
   ],
 
   reducers: {
-    UP(current, productId) {
-      const target = current.find((e) => e.id === productId);
-      return target.count + 1;
+    correctionProduct(state, action) {
+      const targetindex = state.findIndex((e) => e.id == action.payload.id);
+      console.log(targetindex);
+      state[targetindex].count += Number(action.payload.count);
     },
-    DOWN(current, productId) {
-      const target = current.find((e) => e.id === productId);
-      return target.count - 1;
+    addProduct(state, action) {
+      console.log(action.payload.id);
+      const targetIndex = state.findIndex((e) => e.id == action.payload.id);
+      console.log(targetIndex);
+      targetIndex !== -1
+        ? (state[targetIndex].count =
+            state[targetIndex].count + action.payload.count)
+        : state.push(action.payload);
     },
   },
 });
 
-export let { UP, DOWN } = cartProducts.actions;
+export let { correctionProduct, addProduct } = cartProducts.actions;
 
 export default configureStore({
   reducer: {
