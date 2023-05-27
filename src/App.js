@@ -1,6 +1,6 @@
 import "./App.css";
 import { Button, Nav, Navbar, Container, Row, Col } from "react-bootstrap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import data from "./data.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Home from "./page/Home";
@@ -11,6 +11,10 @@ import Cart from "./page/Cart";
 function App() {
   const [products] = useState(data);
   let navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem("recent", JSON.stringify([]));
+  }, []);
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark" className="navbar">

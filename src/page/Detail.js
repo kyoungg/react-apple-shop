@@ -51,6 +51,16 @@ const Detail = ({ products }) => {
   };
 
   useEffect(() => {
+    console.log(id);
+    let newRecent = localStorage.getItem("recent");
+    newRecent = JSON.parse(newRecent);
+    newRecent.push(Number(id));
+    let uniqueRecent = [...new Set(newRecent)];
+    console.log(uniqueRecent);
+    localStorage.setItem("recent", JSON.stringify(uniqueRecent));
+  }, []);
+
+  useEffect(() => {
     setTimeout(() => {
       setFade(styles.end);
     }, 100);
